@@ -21,9 +21,9 @@ choices.forEach((choice)=>{     //travesing every choice
 
 function randomChoice()     //the function to generate random computer choice
 {
-    let random=((Math.random()*10)+1);
-    console.log(random);
-    if(random<=3.33)
+    let random=((Math.random()*10)+1);      //using math function which gives number between 0 to 0.99
+    console.log(random);                    //checking on console
+    if(random<=3.33)                        //dividing by one third to make a computer choice logic
         return 'rock';
     else if(random<=6.66 && random>3.33)
         return 'paper';
@@ -31,52 +31,51 @@ function randomChoice()     //the function to generate random computer choice
         return 'scissors';
 };
 
-function updateScore(userChoice,comChoice)
+function updateScore(userChoice,comChoice)      //function to update the score of user or computer
 {
-    if(comChoice===userChoice)
+    if(comChoice===userChoice)      //draw condition
     {
         return 0;
     }
-    else if(comChoice==='rock' && userChoice==='scissors')
+    else if(comChoice==='rock' && userChoice==='scissors')      //computer winning condition
     {
         comScore++;
         return 1;
     }
-    else if(comChoice==='scissors' && userChoice==='paper')
+    else if(comChoice==='scissors' && userChoice==='paper')     //computer winning condition
     {
         comScore++;
         return 1;
     }
-    else if(comChoice==='paper' && userChoice==='rock')
+    else if(comChoice==='paper' && userChoice==='rock')     //computer winning condition
     {
         comScore++;
         return 1;
     }
-    else{
+    else{           //user winning all conditions ooposite of all previous conditions
         userScore++;
         return -1;
     }
 };
 
-function displayScore(userChoice,comChoice,winner)
+function displayScore(userChoice,comChoice,winner)      //function to display result on the page
 {   console.log(userScore,comScore);
-    document.getElementById("your-score").innerText=`${userScore}`;
-    document.getElementById("com-score").innerText=`${comScore}`;
-
-    console.log(button);
-    if(winner===1)
+    document.getElementById("your-score").innerText=`${userScore}`;     //showing the current score of user
+    document.getElementById("com-score").innerText=`${comScore}`;       //showing current score of computer
+        
+    if(winner===1)          //if computer wins
     {
-        button.innerText=`Computer Wins! ${comChoice} beats ${userChoice}`;
-        button.style.backgroundColor="red";
+        button.innerText=`Computer Wins! ${comChoice} beats ${userChoice}`;         //changing the text in button with result
+        button.style.backgroundColor="red";                                         //changing background color of button as red means loose
     }
-    else if(winner===-1){
-        button.innerText=`You Won! ${comChoice} beats ${userChoice}`;
-        button.style.backgroundColor="Green";
+    else if(winner===-1){       //if user wins
+        button.innerText=`You Won! ${comChoice} beats ${userChoice}`;           //changing the text in button with result
+        button.style.backgroundColor="Green";                                   //changing background color of button as green means won
     }
-    else
+    else    //if match draws
     {
-        button.innerText=`Draw! Play Again.`;
-        button.style.backgroundColor="#14213d";
+        button.innerText=`Draw! Play Again.`;                   //changing the text in button with result
+        button.style.backgroundColor="#14213d";               //changing background color of button back to original
     }
     return;
 };
