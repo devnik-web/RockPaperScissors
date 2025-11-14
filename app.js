@@ -1,25 +1,25 @@
-let userScore=0;
-let comScore=0;
-let comChoice;
-let userChoice;
-const choices=document.querySelectorAll(".choice");
-let button=document.querySelector("#select-btn");
+let userScore=0;    //counts the score of user
+let comScore=0;     //counts the score of computer
+let comChoice;      //tracks the choice of computer
+let userChoice;     //tracks the choice of user
+const choices=document.querySelectorAll(".choice");     //the choices or images collection
+let button=document.querySelector("#select-btn");       //button to change the status
 
-choices.forEach((choice)=>{
-    choice.addEventListener("click",()=>{
-        console.log("Choice is clicked")
-        userChoice=choice.getAttribute("id");
-        console.log(userChoice);
-        comChoice=randomChoice();
-        console.log(comChoice);
+choices.forEach((choice)=>{     //travesing every choice
+    choice.addEventListener("click",()=>{   
+        console.log("Choice is clicked")        //checking message for every choice
+        userChoice=choice.getAttribute("id");   //getting which image is clicked or which is  choosed
+        console.log(userChoice);                //checking via console
+        comChoice=randomChoice();               //generating a random computer choice using function
+        console.log(comChoice);                 //checking what computer generated
 
-        let winner=updateScore(userChoice,comChoice);
+        let winner=updateScore(userChoice,comChoice);   //update function to find who won
         //1:computer win 0:Draw   -1:user wins
-        displayScore(userChoice,comChoice,winner)
+        displayScore(userChoice,comChoice,winner)       //displays the result
     })
 });
 
-function randomChoice()
+function randomChoice()     //the function to generate random computer choice
 {
     let random=((Math.random()*10)+1);
     console.log(random);
